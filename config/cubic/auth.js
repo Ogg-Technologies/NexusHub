@@ -3,7 +3,7 @@ const node = process.env.NEXUS_TARGET_NODE
 const group = node ? node.split('-')[0] : null // auth-core, ui-core, etc, take first word before dash
 
 // Use some adaptions when inside docker, especially database connections.
-if (process.env.DOCKER && (prod ? group === 'auth' : true)) {
+if (process.env.DOCKER && prod && group === 'auth') {
   const fs = require('fs')
   const certPrivate = fs.readFileSync(`/run/secrets/nexus-private-key`, 'utf-8')
   const certPublic = fs.readFileSync(`/run/secrets/nexus-public-key`, 'utf-8')

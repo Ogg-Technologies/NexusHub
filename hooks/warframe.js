@@ -1,5 +1,4 @@
 const mongodb = require('mongodb').MongoClient
-const Items = require('warframe-items')
 const _ = require('lodash')
 
 class Hook {
@@ -58,6 +57,7 @@ class Hook {
    * Add item list on startup
    */
   async verifyItemList () {
+    const Items = require('warframe-items')
     const url = cubic.config.warframe.core.mongoUrl
     const mongo = await mongodb.connect(url, { useNewUrlParser: true })
     const db = mongo.db(cubic.config.warframe.core.mongoDb)

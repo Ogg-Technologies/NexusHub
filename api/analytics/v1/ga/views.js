@@ -1,4 +1,4 @@
-const Endpoint = cubic.nodes.main.core.Endpoint
+const Endpoint = cubic.nodes.api.core.Endpoint
 const { google } = require('googleapis')
 const analytics = google.analytics('v3')
 const options = require(`${process.cwd()}/config/ga/nexushub-ga-user.js`)

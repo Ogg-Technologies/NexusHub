@@ -1,4 +1,4 @@
-const Endpoint = cubic.nodes.main.core.Endpoint
+const Endpoint = cubic.nodes.api.core.Endpoint
 const path = require('path')
 const fs = require('fs')
 const endpoints = []

@@ -1,4 +1,4 @@
-const Endpoint = cubic.nodes.main.core.Endpoint
+const Endpoint = cubic.nodes.api.core.Endpoint
 
 class Foo extends Endpoint {
   constructor (api, db, url) {

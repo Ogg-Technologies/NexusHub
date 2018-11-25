@@ -3,7 +3,7 @@ const node = process.env.NEXUS_TARGET_NODE
 const group = node ? node.split('-')[0] : null // auth-core, ui-core, etc, take first word before dash
 
 // Use some adaptions when inside docker, especially database connections.
-if (process.env.DOCKER && (prod ? group === 'main' : true)) {
+if (process.env.DOCKER && prod && group === 'main') {
   const fs = require('fs')
   const certPublic = fs.readFileSync(`/run/secrets/nexus-public-key`, 'utf-8')
   const dbSecret = fs.readFileSync(`/run/secrets/mongo-admin-pwd`, 'utf-8').trim()
@@ -39,9 +39,6 @@ if (process.env.DOCKER && (prod ? group === 'main' : true)) {
 else {
   module.exports = {
     api: {
-      group: 'main'
-    },
-    core: {
       endpointPath: `${process.cwd()}/api/`,
       endpointPathExclude: /(\/warframe|\/lib)/,
       mongoDb: 'nexus-main',
